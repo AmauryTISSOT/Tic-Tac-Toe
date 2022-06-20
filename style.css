@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    border: 2px solid red;
 }
 
 :root{
@@ -31,5 +30,6 @@ body{
     justify-content: center;
     align-items: center;
     border-radius: 12px;
+    font-size: 4rem;
 }
 
