@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 2px solid red;
+}
+
+:root{
+    --grid-color: #aaaab5;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    align-items: center;
+}
+
+.grid-display {
+    background-color: var(--grid-color);
+    width: 10rem;
+    height: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+}
+
