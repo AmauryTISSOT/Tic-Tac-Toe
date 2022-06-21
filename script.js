@@ -26,25 +26,39 @@ const GameBoard = () => {
         })
     };
 
-    // Function who display "X" inside a container grid and get his ID;
+    // Function who display player move and get ID;
     const displayPlayerMove = () => {
         gridElement.forEach(element => {
             element.addEventListener('click', (event) => {
-                element.textContent = 'X';
+                //element.textContent = 'X';
                 idInfo = event.target.id;
-                console.log(idInfo);
                 _populateGridArray();
-                console.table(grid)
+                _displayGrid();
+                console.log(grid)
             })
         })
     };
     
     // Function who "populate" the grid array
-    const _populateGridArray = () => {
-        grid.splice(idInfo,1,'X')
+    const _populateGridArray = () =>{
+        if (grid[idInfo] != 'X' || 'O') {
+            grid.splice(idInfo,1,'X')
+        }
+        else {console.log('no')}
     }
 
-    return {grid, activateReset, displayPlayerMove}    
+    // Function who display the grid array on DOM
+    const _displayGrid = () => {
+        let gridIndex;
+        grid.forEach(element => {
+            if(element === 'X' || element ==='O'){
+                gridIndex = grid.indexOf(element);
+                document.getElementById(gridIndex).textContent = grid[gridIndex];
+            }     
+    })
+    }
+
+    return {grid, activateReset, displayPlayerMove, _displayGrid}    
 };
 
 
