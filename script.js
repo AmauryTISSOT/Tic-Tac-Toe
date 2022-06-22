@@ -34,7 +34,7 @@ const GameBoard = () => {
                 idInfo = event.target.id;
                 _populateGridArray();
                 _displayGrid();
-                console.log(grid)
+                //console.log(grid)
             })
         })
     };
@@ -45,22 +45,51 @@ const GameBoard = () => {
             grid.splice(idInfo,1,'X')
         }
         else {console.log('no')}
-    }
+    };
 
     // Function who display the grid array on DOM
     const _displayGrid = () => {
-        let gridIndex;
-        grid.forEach(element => {
-            if(element === 'X' || element ==='O'){
-                gridIndex = grid.indexOf(element);
-                document.getElementById(gridIndex).textContent = grid[gridIndex];
-            }     
-    })
-    }
+        for (let i=0; i<grid.length; i++)
+            if (grid[i] === 'X' || grid[i] === 'O'){
+                document.getElementById(i).textContent = 'X';
+            }
+    };
 
-    return {grid, activateReset, displayPlayerMove, _displayGrid}    
+    return {grid, activateReset, displayPlayerMove}    
 };
+
+
+const Player = (() => {
+
+    let player1Name;
+    let player2Name;
+
+    // Function to get player 1 & 2 name form input data
+    const getPlayerName = () => {
+        playerNameForm = document.querySelector('.formPlayerName');
+        playerNameForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            player1Name = document.querySelector('.player1').value || 'Player 1';
+            player2Name = document.querySelector('.player2').value || 'Player 2';
+            _displayPlayerName();}
+        )
+    };
+
+    // Function who display player Name
+    const _displayPlayerName = () => {
+        document.querySelector('.player1NameDisplay').textContent = player1Name;
+        document.querySelector('.player2NameDisplay').textContent = player2Name;
+
+    };
+
+    return {getPlayerName}
+
+})();
+
 
 
 const test = GameBoard();
 test.displayPlayerMove();
+
+Player.getPlayerName();
+
